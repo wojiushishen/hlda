@@ -1,0 +1,1 @@
+add_library(src corpus.cpp document.cpp util.cpp tree.cu hlda.cu)

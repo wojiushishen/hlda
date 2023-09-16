@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.17)
+project(HLDA)
+set(CMAKE_CUDA_COMPILER /usr/local/cuda-12.0/bin/nvcc)
+set(CMAKE_CUDA_ARCHITECTURES 61)
+set(CMAKE_C_COMPILER /usr/bin/gcc-7)
+set(CMAKE_CXX_COMPILER /usr/bin/g++-7)
+
+enable_language("CUDA")
+set(CMAKE_CXX_STANDARD 14)
+#set(CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS};-std=c++14")
+# set(CMAKE_CUDA_FLAGS "-std=c++17 -g -G -Xptxas -O0")
+
+set(CMAKE_CUDA_FLAGS "-std=c++17")
+
+include_directories(src)
+add_subdirectory(src)
+set(LINK_LIBS src)
+add_executable(hlda main.cu)
+target_link_libraries(hlda ${LINK_LIBS})
+# add_executable(hlda seg_sort_test.cu)
